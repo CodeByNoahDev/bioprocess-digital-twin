@@ -1,0 +1,129 @@
+{
+  "mspc": {
+    "n_train_batches": 40,
+    "pca_components_by_day": {
+      "1": 11,
+      "2": 13,
+      "3": 15,
+      "4": 16,
+      "5": 16,
+      "6": 17,
+      "7": 17,
+      "8": 18,
+      "9": 18,
+      "10": 18,
+      "11": 18,
+      "12": 19,
+      "13": 19,
+      "14": 19
+    },
+    "false_alarm_rate_normal_batches": {
+      "loo_limits": 0.1,
+      "naive_training_limits": 1.0
+    },
+    "per_day_out_of_limit_rate_normal": 0.03571428571428571,
+    "faults": {
+      "temp_excursion": {
+        "description": "Jacket/heater fault: +2 deg C for 2 days",
+        "detection_rate": 1.0,
+        "mean_days_from_onset_to_alarm": 1.67,
+        "top_contributing_variables": [
+          "temp",
+          "ph",
+          "do"
+        ]
+      },
+      "ph_probe_drift": {
+        "description": "pH probe drifts; controller holds the wrong pH while the probe reads 7.0",
+        "detection_rate": 1.0,
+        "mean_days_from_onset_to_alarm": 6.41,
+        "top_contributing_variables": [
+          "viability",
+          "glutamine",
+          "lactate"
+        ]
+      },
+      "low_glutamine_feed": {
+        "description": "Wrong feed lot: glutamine at 25 % of spec",
+        "detection_rate": 1.0,
+        "mean_days_from_onset_to_alarm": 3.33,
+        "top_contributing_variables": [
+          "osmolality",
+          "glutamine",
+          "lactate"
+        ]
+      },
+      "do_control_failure": {
+        "description": "Sparger fouling: dissolved oxygen drops to 3 % for 3 days",
+        "detection_rate": 1.0,
+        "mean_days_from_onset_to_alarm": 1.64,
+        "top_contributing_variables": [
+          "do",
+          "viability",
+          "ph"
+        ]
+      },
+      "poor_inoculum": {
+        "description": "Seed train problem: half the cells at 85 % viability",
+        "detection_rate": 1.0,
+        "mean_days_from_onset_to_alarm": 2.0,
+        "top_contributing_variables": [
+          "viability",
+          "vcd",
+          "titer"
+        ]
+      }
+    }
+  },
+  "soft_sensor": {
+    "calibration_spectra": 920,
+    "preprocessing_comparison": {
+      "raw": {
+        "components": 5,
+        "rmsecv_mM": 1.581
+      },
+      "savgol_d1": {
+        "components": 2,
+        "rmsecv_mM": 1.632
+      },
+      "savgol_d1+snv": {
+        "components": 5,
+        "rmsecv_mM": 3.988
+      }
+    },
+    "selected_preprocessing": "savgol_d1",
+    "test_rmse_vs_analyser_mM": 1.294,
+    "test_rmse_vs_true_mM": 0.893,
+    "test_r2_vs_true": 0.943,
+    "robustness_on_faulty_batches": {
+      "without_spiking": {
+        "rmse_all_faulty_hours_mM": 1.247,
+        "rmse_where_glucose_above_40mM": 2.45
+      },
+      "with_spiking": {
+        "rmse_all_faulty_hours_mM": 1.146,
+        "rmse_where_glucose_above_40mM": 1.686
+      }
+    }
+  },
+  "optimisation": {
+    "min_harvest_viability": 70.0,
+    "best_feasible": {
+      "temp_shift_day": 6,
+      "feed_frac": 0.05,
+      "titer_g_l": 4.186,
+      "harvest_viability": 71.022,
+      "product_g": 6.489,
+      "peak_vcd": 20.44
+    },
+    "nominal_recipe": {
+      "temp_shift_day": 5,
+      "feed_frac": 0.04,
+      "titer_g_l": 4.467,
+      "harvest_viability": 73.514,
+      "product_g": 6.432,
+      "peak_vcd": 21.677
+    }
+  },
+  "runtime_s": 23.3
+}

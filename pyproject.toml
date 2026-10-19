@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biotwin"
+version = "0.1.0"
+description = "Digital twin of a CHO fed-batch bioreactor with multivariate process monitoring (MSPC) and a Raman PLS soft sensor"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Noah Lajoie Olaogun" }]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "pandas>=2.0",
+    "scikit-learn>=1.4",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+packages = ["biotwin"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
